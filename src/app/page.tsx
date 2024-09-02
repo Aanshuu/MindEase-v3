@@ -12,15 +12,15 @@ export default function Home() {
     <>
       {/* <Auth /> */}
       <MaxWidthWrapper className="mb-12 mt-20 sm:mt-40 flex flex-col items-center justify-center text-center">
-        <div className="mx-auto mb-4 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border border-gray-200 bg-white px-7 py-2 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50">
-          <p className="text-sm font-semibold text-black">
+        <div className="mx-auto mb-4 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border border-gray-200 bg-white px-7 py-2 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50 dark:border-gray-900 dark:bg-black dark:hover:border-gray-900 dark:hover:bg-black/50 dark:shadow-dark-md">
+          <p className="text-sm font-semibold text-black dark:text-white">
             Welcome to MindEase
           </p>
         </div>
-        <h1 className="max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
-        Chat Your Way to <span className="text-blue-600">Calm</span>
+        <h1 className="max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl text-black dark:text-white">
+          Chat Your Way to <span className="text-blue-600">Calm</span>
         </h1>
-        <p className="mt-5 max-w-prose text-zinc-700 sm-text:lg">
+        <p className="mt-5 max-w-prose text-zinc-700 dark:text-gray-400 sm-text:lg">
           Introducing MindEase, your personal AI-powered mental health
           companion. Engage in private, meaningful conversations with a
           supportive chatbot designed to listen and help you navigate your
@@ -32,12 +32,12 @@ export default function Home() {
         <TransitionLink
           className={buttonVariants({
             size: "default",
-            className: "mt-5 bg-black text-white",
+            className: "mt-5 bg-black text-white dark:bg-white dark:text-black",
           })}
           href="/dashboard"
         >
           {/* target="_blank" */}
-          Get Started <ArrowRight className="ml-2 h-5 w-5" />
+          Get Started <ArrowRight className="ml-2 h-5 w-5 dark:text-black" />
         </TransitionLink>
       </MaxWidthWrapper>
 
