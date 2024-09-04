@@ -26,7 +26,8 @@ const config: Config = {
         // Add more colors as needed
       },
       boxShadow: {
-        'dark-md': '0 10px 15px -3px rgba(0, 0, 0, 0.9), 0 4px 6px -2px rgba(0, 0, 0, 0.4), 0 0 8px rgba(255, 255, 255, 0.6)'
+        'dark-md': '0 10px 15px -3px rgba(0, 0, 0, 0.9), 0 4px 6px -2px rgba(0, 0, 0, 0.4), 0 0 8px rgba(255, 255, 255, 0.6)',
+        'dark-lg': '0 15px 25px -5px rgba(0, 0, 0, 0.9), 0 8px 10px -4px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 255, 255, 0.8), 0 20px 30px -10px rgba(0, 0, 0, 0.8)'
         // Add other custom shadows if needed
       },
     },
