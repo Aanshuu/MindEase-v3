@@ -30,7 +30,7 @@ const Navbar = () => {
                 Pricing
               </TransitionLink> */}
               <TransitionLink
-                href="/signIn"
+                href="/signUp"
                 className={buttonVariants({
                   variant: "ghost",
                   size: "sm",
@@ -40,7 +40,7 @@ const Navbar = () => {
                 Sign In
               </TransitionLink>
               <TransitionLink
-                href="/signUp"
+                href="/dashboard"
                 className={buttonVariants({
                   size: "sm",
                   className: "bg-black text-white dark:bg-white dark:text-black",

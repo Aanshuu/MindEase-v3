@@ -22,7 +22,7 @@ export default function SignUp() {
         .collection("users")
         .create({ email, password, passwordConfirm: password });
       console.log("user registered", user);
-      router.push("/");
+      router.push("/dashboard");
     } catch (err: any) {
       console.error("failed to register", err);
       setError(err.message);
@@ -36,7 +36,7 @@ export default function SignUp() {
         .collection("users")
         .authWithPassword(email, password);
       console.log("user logged in", authData);
-      router.push("/");
+      router.push("/dashboard");
     } catch (err: any) {
       console.error("failed to login", err.message);
       setError(err.message);
