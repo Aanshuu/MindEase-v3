@@ -163,6 +163,7 @@ export default function SignUp() {
               </div>
             </div>
             <button
+            type="button"
               onClick={handleLogin}
               //   type="submit"
               className={buttonVariants({
@@ -174,6 +175,7 @@ export default function SignUp() {
               Login
             </button>
             <button
+            type="button"
               onClick={handleSignUp}
               //   type="submit"
               className={buttonVariants({

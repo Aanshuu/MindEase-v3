@@ -15,7 +15,7 @@ export default function Dashboard() {
     const fetchMessages = async () => {
       try {
         const records = await pb.collection("messages").getFullList({
-          sort: "created",
+          sort: "-created",
           // Disable auto-cancellation
           noAutoCancel: true,
         });
