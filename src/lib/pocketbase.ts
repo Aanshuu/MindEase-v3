@@ -2,8 +2,8 @@ import PocketBase from "pocketbase";
 import {useState, useEffect, use} from "react";
 // const pb = new PocketBase(process.env.NEXT_PUBLIC_PB_URL);
 
-export const pb = new PocketBase(process.env.NEXT_PUBLIC_PB_URL);
-// export const pb = new PocketBase('https://mindease.pockethost.io/');
+// export const pb = new PocketBase(process.env.NEXT_PUBLIC_PB_URL);
+export const pb = new PocketBase('https://mindease.pockethost.io/');
 // console.log(process.env.NEXT_PUBLIC_PB_URL);
 
 export function useCurrentUser(){
