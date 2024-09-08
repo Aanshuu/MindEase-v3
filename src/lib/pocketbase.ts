@@ -2,8 +2,8 @@ import PocketBase from "pocketbase";
 import {useState, useEffect, use} from "react";
 // const pb = new PocketBase(process.env.NEXT_PUBLIC_PB_URL);
 
-// export const pb = new PocketBase(process.env.NEXT_PUBLIC_POCKETBASE_URL);
-export const pb = new PocketBase('https://mindease.pockethost.io/');
+export const pb = new PocketBase(process.env.NEXT_PUBLIC_PB_URL);
+// export const pb = new PocketBase('https://mindease.pockethost.io/');
 // console.log(process.env.NEXT_PUBLIC_PB_URL);
 
 export function useCurrentUser(){
@@ -21,9 +21,4 @@ export function useCurrentUser(){
   
   return currentUser;
 }
-// export const currentUser = writable(pb.authStore.model);
 
-// pb.authStore.onChange((auth) => {
-//   console.log("authStore changed", auth);
-//   currentUser.set(pb.authStore.model);
-// });
