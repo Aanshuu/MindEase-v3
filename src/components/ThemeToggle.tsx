@@ -15,13 +15,24 @@ const ThemeToggle = () => {
   // }, []);
 
   useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+    document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+  }, []);
+
+
+  useEffect(() => {
     const fetchUserTheme = async() => {
       if(currentUser){
         try{
           const userData = await pb.collection('users').getOne(currentUser.id);
           const userTheme = userData.theme || 'light';
-          setTheme(userTheme);
-          document.documentElement.classList.toggle('dark', userTheme === 'dark');
+          if(userTheme !== theme){
+            setTheme(userTheme);
+            document.documentElement.classList.toggle('dark', userTheme === 'dark');
+            localStorage.setItem('theme', userTheme); 
+          }
+          
         }catch(error){
           console.error(error)
         }
@@ -34,6 +45,8 @@ const ThemeToggle = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     document.documentElement.classList.toggle("dark", newTheme === "dark");
+    localStorage.setItem("theme", newTheme); // Stored
+
     if(currentUser){
       try{
         await pb.collection('users').update(currentUser.id, {theme: newTheme})
