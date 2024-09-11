@@ -10,13 +10,30 @@ import { useRouter } from "next/navigation";
 
 export default function DashboardPage() {
   const router = useRouter();
+  const [user, setUser] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     if (!pb.authStore.isValid) {
       redirect("/signUp");
+      return;
     }
+    setUser(pb.authStore.model);
+    setIsLoading(false);
   }, [router]);
 
-  const user = pb.authStore.isValid ? pb.authStore.model : null;
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="flex space-x-2">
+          <div className="w-4 h-4 bg-black dark:bg-white rounded-full animate-pulse"></div>
+          <div className="w-4 h-4 bg-black dark:bg-white rounded-full animate-pulse delay-200"></div>
+          <div className="w-4 h-4 bg-black dark:bg-white rounded-full animate-pulse delay-400"></div>
+        </div>
+      </div>
+    );
+  }
+  // const user = pb.authStore.isValid ? pb.authStore.model : null;
 
   return user? <Dashboard user={user} /> : null;
 }
@@ -75,21 +92,21 @@ function Dashboard({ user }: { user: any }) {
     messageInputRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const handleLogout = async () => {
-    pb.authStore.clear();
-    router.push("/");
-  };
+  // const handleLogout = async () => {
+  //   pb.authStore.clear();
+  //   router.push("/");
+  // };
 
   return (
     <>
-      <div>
+      {/* <div>
         <button
           className="p-2 text-white bg-black dark:text-black dark:bg-white rounded-md"
           onClick={handleLogout}
         >
           LogOut
         </button>
-      </div>
+      </div> */}
 
       <MaxWidthWrapper>
         <div className="flex flex-col h-screen">
