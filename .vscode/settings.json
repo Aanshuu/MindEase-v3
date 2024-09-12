@@ -4,6 +4,7 @@
     "Cacheable",
     "Firestore",
     "lucide",
-    "nextauth"
+    "nextauth",
+    "signin"
   ]
 }

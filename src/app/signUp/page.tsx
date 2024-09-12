@@ -3,6 +3,7 @@ import { useCurrentUser, pb } from "@/lib/pocketbase";
 import { useState, useEffect } from "react";
 import MaxWidthWrapper from "@/components/common/MaxWidthWrapper";
 import { Eye, EyeOff } from "lucide-react";
+import { FcGoogle } from "react-icons/fc";
 import { TransitionLink } from "@/lib/TransitionLink";
 import { buttonVariants } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
@@ -44,6 +45,24 @@ export default function SignUp() {
   };
   //   const loginSubmitHandler = async(){
   //   }
+  const signinWithGoogleHandler = async () => {
+    try {
+      // Start OAuth2 flow for Google
+      const authData = await pb.collection("users").authWithOAuth2({
+        provider: "google",
+        // optional: you can add a success redirect URL or failure redirect URL
+        options: {
+          redirectUrl: `${window.location.origin}/api/oauth2-redirect`, // Add the correct path here
+        },
+      });
+      console.log("Google OAuth success", authData);
+      router.push("/dashboard");
+    } catch (error: any) {
+      console.error("Google OAuth failed", error);
+      setError(error.message);
+    }
+  };
+
   const togglePasswordHandler = () => {
     setShowPassword((prev) => !prev);
   };
@@ -163,7 +182,7 @@ export default function SignUp() {
               </div>
             </div>
             <button
-            type="button"
+              type="button"
               onClick={handleLogin}
               //   type="submit"
               className={buttonVariants({
@@ -175,7 +194,7 @@ export default function SignUp() {
               Login
             </button>
             <button
-            type="button"
+              type="button"
               onClick={handleSignUp}
               //   type="submit"
               className={buttonVariants({
@@ -187,9 +206,8 @@ export default function SignUp() {
               SignUp
             </button>
           </form>
-          {/* google signIn */}
-
-          {/* <div className="flex items-center justify-center mt-6 w-full">
+          {/* Google Sign-In */}
+          <div className="flex items-center justify-center mt-6 w-full">
             <div className="w-full h-px bg-gray-300"></div>
             <span className="text-sm text-gray-500 mx-3 text-nowrap">
               Or sign in with
@@ -202,7 +220,10 @@ export default function SignUp() {
               onClick={signinWithGoogleHandler}
               className="cursor-pointer"
             />
-          </div> */}
+          </div>
+
+          {/* Error display */}
+          {error && <p style={{ color: "red" }}>{error}</p>}
 
           {/* register page for signup */}
 
